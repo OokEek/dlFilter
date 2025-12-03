@@ -261,11 +261,12 @@ alias -l DLF.mIRCversion {
   var %app $nopath($mircexe)
   ; AdiIRC - not sure what version is specifically needed
   ; 2.8 is the version at the time of starting to think about AdiIRC support.
+  ; changed to 4.4 as this has been the current version for some time.
   if (AdiIRC* iswm %app) {
-    if ($version >= 2.8) return 0
+    if ($version >= 4.4) return 0
     %DLF.enabled = 0
     DLF.Groups.Events
-    return AdiIRC 2.8
+    return AdiIRC 4.4
   }
   ; mirc - We need returnex first implemented in 6.17
   ; mirc - We need regex /F first implemented in 7.44
