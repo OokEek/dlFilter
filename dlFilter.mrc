@@ -1519,19 +1519,12 @@ alias -l DLF.Chan.PrefixedNick {
 alias -l DLF.Chan.EditSend {
   ; Done with timers to allow messages to be sent before doing the next one.
   DLF.Watch.Called DLF.Chan.EditSend : $1-
-  var %delta 1
-  var %t $+(DLF.editsend.,$network,$1)
-  if ($timer(%t)) {
-    var %secs $timer(%t).secs
-    var %existing $gettok($timer(%t).com,3-,$asc($space))
-  }
-  else {
-    var %secs 0
-    var %existing $editbox($1)
-  }
+  var %delta = 1, %t = $+(DLF.editsend.,$network,$1)
+  if ($timer(%t)) var %secs = $timer(%t).secs, %existing = $gettok($timer(%t).com,3-,$asc($space))
+  else var %secs = 0, %existing = $editbox($1)
   .timer 1 %secs editbox -n $1-
   inc %secs %delta
-  [ $+(.timer,%t) ] 1 %secs editbox $1 %existing
+  $+(.timer,%t) 1 %secs editbox $1 %existing
 }
 
 ; Block channel ctcp finger and optionally block other channel ctcp
