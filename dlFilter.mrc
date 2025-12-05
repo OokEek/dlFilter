@@ -306,8 +306,8 @@ alias -l DLF.LoadPosition {
 ; Rename variables if needed to upgrade from 1.16 names to 2.x names
 alias -l DLF.RenameVar {
   if ($($+(%,DLF.,$2),2) == $null) return
-  .set $($+(%,DLF.,$1),1) $($+(%,DLF.,$2),2)
-  .unset $($+(%,DLF.,$2),1)
+  .set $+(%,DLF.,$1) $($+(%,DLF.,$2),2)
+  .unset $+(%,DLF.,$2)
 }
 
 on *:signal:DLF.Initialise: { DLF.Initialise $1- }
