@@ -6093,11 +6093,11 @@ alias -l DLF.CreateHashTables {
   inc %matches $hget(DLF.find.fileserv,0).item
 
   DLF.hmake DLF.find.headregex
-  hadd DLF.find.headregex ^\s*From\s+list\s+(@\S+)\s+found\s+([0-9,]+),\s+displaying\s+([0-9]+):$ 1 2 3
-  hadd DLF.find.headregex ^\s*Result.*limit\s+by\s+([0-9,]+)\s+reached\.\s+Download\s+my\s+list\s+for\s+more,\s+by\s+typing\s+(@\S+) 2 0 1
-  hadd DLF.find.headregex ^\s*Search\s+Result\W+More\s+than\s+([0-9,]+)\s+Matches\s+For\s+(.*?)\W+Get\s+My\s+List\s+Of\s+[0-9\54]+\s+Files\s+By\s+Typing\s+(@\S+)\s+In\s+The\s+Channel\s+Or\s+Refine\s+Your\s+Search.\s+Sending\s+first\s+([0-9\54]+)\s+Results\W+OmenServe 3 1 4 2
-  hadd DLF.find.headregex ^\s*Search\s+Result\W+([0-9\54]+)\s+Matches\s+For\s+(.*?)\s+Get\s+My\s+List\s+Of\s+[0-9\54]+\s+Files\s+By\s+Typing\s+(@\S+)\s+In\s+The\s+Channel\s+Or\s+Refine\s+Your\s+Search.\s+Sending\s+first\s+([0-9\54]+)\s+Results\W+OmenServe 3 1 4 2
-  hadd DLF.find.headregex ^\s*Search\s+Result\s+\+\s+More\s+than\s+([0-9\54]+)\s+Matches\s+For\s+(.*?)\s+\+\s+Get\s+My\s+List\s+Of\s+[0-9\54]+\s+Files\s+By\s+Typing\s+(@\S+)\s+In\s+The\s+Channel\s+Or\s+Refine\s+Your\s+Search\.\s+Sending\s+first\s+([0-9\54]+)\s+Results 3 1 4 2
+  hadd DLF.find.headregex ^\s*From\s+list\s+(@\S+)\s+found\s+([\d,]+),\s+displaying\s+(\d+):$ 1 2 3
+  hadd DLF.find.headregex ^\s*Result.*limit\s+by\s+([\d,]+)\s+reached\.\s+Download\s+my\s+list\s+for\s+more,\s+by\s+typing\s+(@\S+) 2 0 1
+  hadd DLF.find.headregex ^\s*Search\s+Result\W+More\s+than\s+([\d,]+)\s+Matches\s+For\s+(.*?)\W+Get\s+My\s+List\s+Of\s+[\d\54]+\s+Files\s+By\s+Typing\s+(@\S+)\s+In\s+The\s+Channel\s+Or\s+Refine\s+Your\s+Search.\s+Sending\s+first\s+([\d\54]+)\s+Results\W+OmenServe 3 1 4 2
+  hadd DLF.find.headregex ^\s*Search\s+Result\W+([\d\54]+)\s+Matches\s+For\s+(.*?)\s+Get\s+My\s+List\s+Of\s+[\d\54]+\s+Files\s+By\s+Typing\s+(@\S+)\s+In\s+The\s+Channel\s+Or\s+Refine\s+Your\s+Search.\s+Sending\s+first\s+([\d\54]+)\s+Results\W+OmenServe 3 1 4 2
+  hadd DLF.find.headregex ^\s*Search\s+Result\s+\+\s+More\s+than\s+([\d\54]+)\s+Matches\s+For\s+(.*?)\s+\+\s+Get\s+My\s+List\s+Of\s+[\d\54]+\s+Files\s+By\s+Typing\s+(@\S+)\s+In\s+The\s+Channel\s+Or\s+Refine\s+Your\s+Search\.\s+Sending\s+first\s+([\d\54]+)\s+Results 3 1 4 2
   inc %matches $hget(DLF.find.headregex,0).item
 
   DLF.hmake DLF.find.result
