@@ -316,15 +316,7 @@ alias -l DLF.Initialise {
   DLF.Watch.Called DLF.Initialise : $1-
 
   ; Handle obsolete variables
-  .unset %DLF.custom.selected
-  .unset %DLF.filtered.limit
-  .unset %DLF.newreleases
-  .unset %DLF.privrequests
-  .unset %DLF.ptext
-  .unset %DLF.server.limit
-  .unset %DLF.showstatus
-  .unset %DLF.chspam
-  .unset %DLF.spam.addignore
+  .unset %DLF.custom.selected %DLF.filtered.limit %DLF.newreleases %DLF.privrequests %DLF.ptext %DLF.server.limit %DLF.showstatus %DLF.chspam %DLF.spam.addignore
 
   ; Rename variables from 1.16 names to 2.x names
   DLF.RenameVar dccsend.dangerous askregfile.type
