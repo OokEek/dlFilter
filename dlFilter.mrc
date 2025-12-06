@@ -3014,11 +3014,7 @@ alias -l DLF.Win.Echo {
     DLF.Watch.Log Filtered: Already halted by previous script: $1-
     return
   }
-  var %line $DLF.Win.Format($1-)
-  var %col $DLF.Win.MsgType($1)
-  var %flags -tci2rlbf $+ $DLF.Win.HighlightFlag($1)
-  var %pref $2 $+ :
-  var %su $DLF.IsServiceUser($3)
+  var %line = $DLF.Win.Format($1-), %col = $DLF.Win.MsgType($1), %flags = -tci2rlbf $+ $DLF.Win.HighlightFlag($1), %pref = $+($2,:), %su = $DLF.IsServiceUser($3)
   if ($2 == Status) {
     echo %flags $+ s %col %line
     DLF.Watch.Log Echoed: To Status Window
@@ -3028,12 +3024,14 @@ alias -l DLF.Win.Echo {
   ;    DLF.Watch.Log Echoed: To Single-Message Window
   ;  }
   elseif ($2 == @find) {
-    var %chans $DLF.@find.IsResponse
-    var %i $numtok(%chans,$asc($space))
+    var %chans = $DLF.@find.IsResponse, %i = $numtok(%chans,$asc($space))
     while (%i) {
-      var %chan $gettok(%chans,%i,$asc($space))
+      var %chan = $gettok(%chans,%i,$asc($space))
+      ; Ook: note $deltok() executes its result as a command, and does NOT remove anything from %chans
+      ;if ($nick(%chan,$3)) echo -tci2lbf %col %chan %pref %line
+      ;else $deltok(%chans,%i,$asc($space))
       if ($nick(%chan,$3)) echo -tci2lbf %col %chan %pref %line
-      else $deltok(%chans,%i,$asc($space))
+      else var %chans = $deltok(%chans,%i,$asc($space))
       dec %i
     }
     if (%chans != $null) DLF.Watch.Log Echoed: To @find channels with $3 $+ : %chans
